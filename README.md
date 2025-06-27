@@ -76,17 +76,38 @@ git clone https://github.com/your-username/hospital-sql-project.git
 cd hospital-sql-project
 
 2. **Create and connect to PostgreSQL database:**
+- Ensure PostgreSQL is installed and running.
 
-createdb hospital_db
-psql -U postgres -d hospital_db -f schema/create_tables.sql
-psql -U postgres -d hospital_db -f schema/insert_data.sql
+- createdb hospital_db
+
+Then execute the schema and data:
+
+- psql -U postgres -d hospital_db -f schema/create_tables.sql
+- psql -U postgres -d hospital_db -f schema/insert_data.sql
+
+Note: The data folder contains CSV files, which are imported via COPY commands inside insert_data.sql.
 
 3.	**Run analytics and other queries:**
 
 psql -U postgres -d hospital_db -f queries/analytics_queries.sql
 psql -U postgres -d hospital_db -f queries/triggers_and_functions.sql
 
-4.	**(Optional): Explore the Python integration notebook inside /extras**
+4.	**(Optional) Explore with Python (SQL + pandas):**
+You can use Python with psycopg2 to interact with the PostgreSQL database.
+
+Inside the /extras/ folder, you’ll find a Jupyter notebook:
+	•	Connects to the PostgreSQL database
+	•	Uses psycopg2 + pandas
+	•	Performs analysis and simple visualizations
+-To run it, navigate to the folder and execute:
+
+cd extras/
+jupyter notebook hospital_analysis.ipynb
+
+5. **(Optional) Add your own data:**
+	•	Update or replace the existing CSV files inside /data
+	•	Modify the insert_data.sql if needed
+	•	Or insert new records manually using INSERT INTO statements
 
 ---
 
