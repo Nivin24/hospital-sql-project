@@ -21,6 +21,7 @@ GROUP BY dep.name
 ORDER BY patient_count DESC;
 
 -- EXPLAIN ANALYZE 3: Department-Wise Appointment Ranking
+EXPLAIN ANALYZE
 WITH dept_appointments AS (
     SELECT 
         dep.name AS department_name,

@@ -4,62 +4,75 @@ CREATE INDEX
 +------------------------------------------------------------------------------------------------------------------------------------+
 |                                                             QUERY PLAN                                                             |
 +------------------------------------------------------------------------------------------------------------------------------------+
-| Limit  (cost=2.99..3.00 rows=5 width=40) (actual time=0.117..0.120 rows=5 loops=1)                                                 |
-|   ->  Sort  (cost=2.99..3.02 rows=11 width=40) (actual time=0.116..0.118 rows=5 loops=1)                                           |
+| Limit  (cost=2.99..3.00 rows=5 width=40) (actual time=0.668..0.671 rows=5 loops=1)                                                 |
+|   ->  Sort  (cost=2.99..3.02 rows=11 width=40) (actual time=0.667..0.669 rows=5 loops=1)                                           |
 |         Sort Key: (count(a.appointment_id)) DESC                                                                                   |
 |         Sort Method: quicksort  Memory: 25kB                                                                                       |
-|         ->  HashAggregate  (cost=2.70..2.81 rows=11 width=40) (actual time=0.088..0.092 rows=10 loops=1)                           |
+|         ->  HashAggregate  (cost=2.70..2.81 rows=11 width=40) (actual time=0.428..0.433 rows=10 loops=1)                           |
 |               Group Key: d.name                                                                                                    |
 |               Batches: 1  Memory Usage: 24kB                                                                                       |
-|               ->  Hash Join  (cost=1.25..2.57 rows=25 width=36) (actual time=0.052..0.067 rows=25 loops=1)                         |
+|               ->  Hash Join  (cost=1.25..2.57 rows=25 width=36) (actual time=0.181..0.197 rows=25 loops=1)                         |
 |                     Hash Cond: (a.doctor_id = d.doctor_id)                                                                         |
-|                     ->  Seq Scan on appointments a  (cost=0.00..1.25 rows=25 width=8) (actual time=0.016..0.019 rows=25 loops=1)   |
-|                     ->  Hash  (cost=1.11..1.11 rows=11 width=36) (actual time=0.019..0.020 rows=11 loops=1)                        |
+|                     ->  Seq Scan on appointments a  (cost=0.00..1.25 rows=25 width=8) (actual time=0.023..0.027 rows=25 loops=1)   |
+|                     ->  Hash  (cost=1.11..1.11 rows=11 width=36) (actual time=0.058..0.058 rows=11 loops=1)                        |
 |                           Buckets: 1024  Batches: 1  Memory Usage: 9kB                                                             |
-|                           ->  Seq Scan on doctors d  (cost=0.00..1.11 rows=11 width=36) (actual time=0.007..0.009 rows=11 loops=1) |
-| Planning Time: 2.731 ms                                                                                                            |
-| Execution Time: 0.222 ms                                                                                                           |
+|                           ->  Seq Scan on doctors d  (cost=0.00..1.11 rows=11 width=36) (actual time=0.009..0.012 rows=11 loops=1) |
+| Planning Time: 7.487 ms                                                                                                            |
+| Execution Time: 1.792 ms                                                                                                           |
 +------------------------------------------------------------------------------------------------------------------------------------+
 (15 rows)
 
 +-------------------------------------------------------------------------------------------------------------------------------------------+
 |                                                                QUERY PLAN                                                                 |
 +-------------------------------------------------------------------------------------------------------------------------------------------+
-| Sort  (cost=26.36..26.42 rows=25 width=40) (actual time=0.174..0.177 rows=8 loops=1)                                                      |
+| Sort  (cost=26.36..26.42 rows=25 width=40) (actual time=0.377..0.379 rows=8 loops=1)                                                      |
 |   Sort Key: (count(DISTINCT a.patient_id)) DESC                                                                                           |
 |   Sort Method: quicksort  Memory: 25kB                                                                                                    |
-|   ->  GroupAggregate  (cost=25.34..25.78 rows=25 width=40) (actual time=0.152..0.166 rows=8 loops=1)                                      |
+|   ->  GroupAggregate  (cost=25.34..25.78 rows=25 width=40) (actual time=0.364..0.372 rows=8 loops=1)                                      |
 |         Group Key: dep.name                                                                                                               |
-|         ->  Sort  (cost=25.34..25.40 rows=25 width=36) (actual time=0.142..0.146 rows=25 loops=1)                                         |
+|         ->  Sort  (cost=25.34..25.40 rows=25 width=36) (actual time=0.357..0.360 rows=25 loops=1)                                         |
 |               Sort Key: dep.name, a.patient_id                                                                                            |
 |               Sort Method: quicksort  Memory: 25kB                                                                                        |
-|               ->  Hash Join  (cost=2.81..24.76 rows=25 width=36) (actual time=0.073..0.087 rows=25 loops=1)                               |
+|               ->  Hash Join  (cost=2.81..24.76 rows=25 width=36) (actual time=0.074..0.083 rows=25 loops=1)                               |
 |                     Hash Cond: (d.doctor_id = a.doctor_id)                                                                                |
-|                     ->  Hash Join  (cost=1.25..23.04 rows=11 width=36) (actual time=0.041..0.049 rows=11 loops=1)                         |
+|                     ->  Hash Join  (cost=1.25..23.04 rows=11 width=36) (actual time=0.051..0.056 rows=11 loops=1)                         |
 |                           Hash Cond: (dep.department_id = d.department_id)                                                                |
-|                           ->  Seq Scan on departments dep  (cost=0.00..18.50 rows=850 width=36) (actual time=0.016..0.017 rows=8 loops=1) |
-|                           ->  Hash  (cost=1.11..1.11 rows=11 width=8) (actual time=0.015..0.016 rows=11 loops=1)                          |
+|                           ->  Seq Scan on departments dep  (cost=0.00..18.50 rows=850 width=36) (actual time=0.017..0.018 rows=8 loops=1) |
+|                           ->  Hash  (cost=1.11..1.11 rows=11 width=8) (actual time=0.028..0.028 rows=11 loops=1)                          |
 |                                 Buckets: 1024  Batches: 1  Memory Usage: 9kB                                                              |
-|                                 ->  Seq Scan on doctors d  (cost=0.00..1.11 rows=11 width=8) (actual time=0.007..0.010 rows=11 loops=1)   |
-|                     ->  Hash  (cost=1.25..1.25 rows=25 width=8) (actual time=0.020..0.020 rows=25 loops=1)                                |
+|                                 ->  Seq Scan on doctors d  (cost=0.00..1.11 rows=11 width=8) (actual time=0.004..0.006 rows=11 loops=1)   |
+|                     ->  Hash  (cost=1.25..1.25 rows=25 width=8) (actual time=0.014..0.015 rows=25 loops=1)                                |
 |                           Buckets: 1024  Batches: 1  Memory Usage: 9kB                                                                    |
-|                           ->  Seq Scan on appointments a  (cost=0.00..1.25 rows=25 width=8) (actual time=0.005..0.010 rows=25 loops=1)    |
-| Planning Time: 0.775 ms                                                                                                                   |
-| Execution Time: 0.254 ms                                                                                                                  |
+|                           ->  Seq Scan on appointments a  (cost=0.00..1.25 rows=25 width=8) (actual time=0.006..0.009 rows=25 loops=1)    |
+| Planning Time: 0.809 ms                                                                                                                   |
+| Execution Time: 0.412 ms                                                                                                                  |
 +-------------------------------------------------------------------------------------------------------------------------------------------+
 (21 rows)
 
-+-----------------+--------------------+-----------+
-| department_name | total_appointments | dept_rank |
-+-----------------+--------------------+-----------+
-| Neurology       |                  5 |         1 |
-| Cardiology      |                  5 |         1 |
-| Pediatrics      |                  3 |         3 |
-| Oncology        |                  3 |         3 |
-| Orthopedics     |                  3 |         3 |
-| Psychiatry      |                  2 |         6 |
-| Dermatology     |                  2 |         6 |
-| ENT             |                  2 |         6 |
-+-----------------+--------------------+-----------+
-(8 rows)
++-------------------------------------------------------------------------------------------------------------------------------------------------+
+|                                                                   QUERY PLAN                                                                    |
++-------------------------------------------------------------------------------------------------------------------------------------------------+
+| WindowAgg  (cost=25.73..26.15 rows=25 width=48) (actual time=0.106..0.114 rows=8 loops=1)                                                       |
+|   ->  Sort  (cost=25.71..25.78 rows=25 width=40) (actual time=0.100..0.102 rows=8 loops=1)                                                      |
+|         Sort Key: dept_appointments.total_appointments DESC                                                                                     |
+|         Sort Method: quicksort  Memory: 25kB                                                                                                    |
+|         ->  Subquery Scan on dept_appointments  (cost=24.88..25.13 rows=25 width=40) (actual time=0.086..0.089 rows=8 loops=1)                  |
+|               ->  HashAggregate  (cost=24.88..25.13 rows=25 width=40) (actual time=0.085..0.088 rows=8 loops=1)                                 |
+|                     Group Key: dep.name                                                                                                         |
+|                     Batches: 1  Memory Usage: 24kB                                                                                              |
+|                     ->  Hash Join  (cost=2.81..24.76 rows=25 width=36) (actual time=0.064..0.074 rows=25 loops=1)                               |
+|                           Hash Cond: (d.doctor_id = a.doctor_id)                                                                                |
+|                           ->  Hash Join  (cost=1.25..23.04 rows=11 width=36) (actual time=0.035..0.040 rows=11 loops=1)                         |
+|                                 Hash Cond: (dep.department_id = d.department_id)                                                                |
+|                                 ->  Seq Scan on departments dep  (cost=0.00..18.50 rows=850 width=36) (actual time=0.012..0.013 rows=8 loops=1) |
+|                                 ->  Hash  (cost=1.11..1.11 rows=11 width=8) (actual time=0.014..0.014 rows=11 loops=1)                          |
+|                                       Buckets: 1024  Batches: 1  Memory Usage: 9kB                                                              |
+|                                       ->  Seq Scan on doctors d  (cost=0.00..1.11 rows=11 width=8) (actual time=0.005..0.007 rows=11 loops=1)   |
+|                           ->  Hash  (cost=1.25..1.25 rows=25 width=8) (actual time=0.013..0.013 rows=25 loops=1)                                |
+|                                 Buckets: 1024  Batches: 1  Memory Usage: 9kB                                                                    |
+|                                 ->  Seq Scan on appointments a  (cost=0.00..1.25 rows=25 width=8) (actual time=0.004..0.007 rows=25 loops=1)    |
+| Planning Time: 0.255 ms                                                                                                                         |
+| Execution Time: 0.455 ms                                                                                                                        |
++-------------------------------------------------------------------------------------------------------------------------------------------------+
+(21 rows)
 
