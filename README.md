@@ -223,9 +223,10 @@ Make sure your `.csv` file matches column order.
 
 ## 👨‍💻 Author
 
-* **Nivin Benny**
-* Aspiring Data Scientist @ Brototype
-* 📫 [LinkedIn](https://www.linkedin.com/in/nivin-benny)
+**Nivin Benny**  
+Aspiring Data Scientist @ Brototype  
+📫 [LinkedIn](https://www.linkedin.com/in/nivin-benny)
+✉️ [nivinbennyvpz@gmail.com](mailto:nivinbennyvpz@gmail.com)
 
 ---
 
