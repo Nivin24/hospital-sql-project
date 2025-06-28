@@ -2,193 +2,218 @@
 
 ## 📌 Project Overview
 
-This project is a **PostgreSQL-based Hospital Management System**, built as part of my Week 22 capstone at **Brototype**.  
-It demonstrates **real-world healthcare data management**, with deep SQL logic, automation, analytics, and performance optimization.
+This is a **PostgreSQL-based Hospital Management System**, built as a **capstone project** during Week 22 of my training at Brototype.
+
+It showcases advanced SQL concepts through a real-world healthcare data model including analytics, automation, performance optimization, and optional Python integration.
 
 ---
 
-## 🚀 Features
+## 📚 Table of Contents
 
-- ✅ Fully normalized relational schema (1NF → 3NF)
-- ✅ Realistic hospital datasets: patients, doctors, appointments, admissions, prescriptions
-- ✅ **Triggers** for automated logging
-- ✅ **Stored procedures** with input validation
-- ✅ **Functions** for reusable logic
-- ✅ **Analytics queries** using JOINs, CTEs, window functions
-- ✅ **Performance tuning** with indexes & `EXPLAIN ANALYZE`
-- ✅ Python integration (optional) via `psycopg2` and `pandas`
+1. [Project Overview](#-project-overview)
+2. [Key Features](#-key-features)
+3. [Project Structure](#-project-folder-structure)
+4. [Tech Stack](#-tech-stack)
+5. [Concepts Covered](#-concepts-covered)
+6. [Analytics Queries](#-analytics-queries)
+7. [Setup Instructions](#-️-setup-instructions)
+8. [ER Diagram](#er-diagram)
+9. [Author](#-author)
+10. [License](#-license)
 
 ---
 
-## 🧱 Project Structure
+## 🚀 Key Features
 
+* ✅ Structured relational schema: Patients, Doctors, Appointments, Admissions, Prescriptions, Medicines, Departments, Rooms
+* ✅ ER Diagram-based normalized design (1NF → 3NF)
+* ✅ Advanced SQL: Joins, subqueries, aggregates, window functions, CTEs
+* ✅ Triggers for automatic logging/workflows
+* ✅ Stored procedures and user-defined functions (PL/pgSQL)
+* ✅ Query performance tuning using indexes & `EXPLAIN ANALYZE`
+* ✅ Python integration for querying and visualizations using `.env`
+* ✅ Organized GitHub-friendly structure with markdown explanations and analytics insights
+
+---
+
+## 🧱 Project Folder Structure
+
+```bash
 hospital-sql-project/
-├── README.md                      # ✅ Project overview and usage guide
-├── schema/                        # 📁 DB schema and data
-│   ├── create_tables.sql          # Table creation scripts
-│   ├── insert_data.sql            # COPY from CSVs
-├── queries/                       # 📁 SQL logic layer
-│   ├── analytics_queries.sql      # Joins, aggregates, CTEs, etc.
-│   ├── triggers_and_functions.sql # Triggers + PL/pgSQL logic
-│   └── optimization_notes.sql     # Indexing + EXPLAIN ANALYZE
+├── README.md                      # Project overview & instructions
+├── schema/                        # Database schema & data
+│   ├── create_tables.sql          # Table creation
+│   └── insert_data.sql            # Inserts using COPY or SQL
+├── queries/                       # Core SQL logic
+│   ├── analytics_queries.sql      # All analytical queries (joins, windows, CTEs)
+│   ├── triggers_and_functions.sql # Triggers, functions (PL/pgSQL)
+│   ├── stored_procedures.sql      # Stored procedure for inserting patients
+│   └── optimization_notes.sql     # Indexing and EXPLAIN ANALYZE outputs
 ├── data/                          # 📁 CSV files for patient, doctor, medicine, etc.
 │   ├── patients.csv
 │   ├── appointments.csv
 │   └── ... (other tables)
-├── explain_outputs/               # 📁 Performance analysis output
-│   └── query_analysis.txt         # EXPLAIN ANALYZE results
-├── extras/                        # 📁 Extended docs and insights
-│   ├── analytics_explained.md     # Detailed markdown for each analytical SQL query
-│   └── hospital_analysis.ipynb    # (Optional) Python Jupyter notebook
-└── screenshots/
-    └── er_diagram.png             # ER diagram image
+├── explain_outputs/               # Performance output logs
+│   └── query_analysis.txt
+├── extras/                        # Optional explanations & integration
+│   ├── analytics_explained.md     # Explanation of each query
+│   ├── hospital_analysis.ipynb    # Python + PostgreSQL integration
+│   └── .env (not pushed)          # For credentials (ignored in Git)
+├── screenshots/                   # Visuals like ER diagram
+│   └── er_diagram.png
+└── .gitignore                     # Excludes .env and unnecessary files
+```
 
 ---
+## 🧰 Tech Stack
+
+| 🧩 Category       | 🛠️ Tool/Technology            |
+| ----------------- | ------------------------------ |
+| Database          | PostgreSQL                     |
+| Language          | SQL + PL/pgSQL                 |
+| Backend Scripting | Python (with psycopg2, pandas) |
+| IDE & Utilities   | VSCode, DBeaver, CLI           |
+| Version Control   | Git & GitHub                   |
+
+🔐 Credentials (for Python) are stored securely in a `.env` file. Already excluded from Git using `.gitignore`.
 
 ---
-
 ## 🧠 Concepts Covered
 
-- ✅ Relational DB design & normalization (1NF to 3NF)
-- ✅ Foreign key constraints and integrity
-- ✅ Stored Procedures with input validation
-- ✅ Triggers and audit logging (AFTER INSERT)
-- ✅ Window Functions (`ROW_NUMBER()`, `RANK()`)
-- ✅ Common Table Expressions (CTEs)
-- ✅ Indexing & performance analysis using `EXPLAIN ANALYZE`
-
----
-
-## 🛠️ Tech Stack
-
-| Component     | Tool                   |
-|---------------|------------------------|
-| Database      | PostgreSQL             |
-| Language      | SQL + PL/pgSQL         |
-| Optional API  | Python (psycopg2, pandas) |
-| Versioning    | Git & GitHub           |
-| Tools         | VSCode, DBeaver, CLI   |
+* ✅ Relational DB design & normalization (1NF to 3NF)
+* ✅ Foreign key constraints and integrity
+* ✅ Stored Procedures with input validation
+* ✅ Triggers and audit logging (AFTER INSERT)
+* ✅ Window Functions (`ROW_NUMBER()`, `RANK()`)
+* ✅ Common Table Expressions (CTEs)
+* ✅ Indexing & performance analysis using `EXPLAIN ANALYZE`
+* ✅ Python integration with SQL
+* ✅ Query visualizations in Jupyter
 
 ---
 
 ## 📊 Analytics Queries
 
-Found in `queries/analytics_queries.sql`, and explained in detail inside:
-- `extras/analytics_explained.md`
+> Located in `queries/analytics_queries.sql` — full explanations in `extras/analytics_explained.md`
 
-### ✅ **Covers:**
 
-- 🔝 **Top 5 Doctors by Appointment Count**  
-  Identify the most consulted doctors based on the number of appointments.
+## 📊 Query Coverage Overview
 
-- 🏥 **Patient Count by Department**  
-  Analyze which departments handle the highest number of unique patients.
+**Covers:**
 
-- 🛏️ **Currently Admitted Patients**  
-  List patients who are currently admitted (no discharge date).
+* 🔝 **Top 5 Doctors by Appointment Count**
+* 📅 **Daily Appointments (7-day view)**
+* 🏥 **Department-wise patient stats**
+* 💊 **Top Prescribed Medicines**
+* 🛏️ **Currently Admitted Patients**
+* 🧾 **Latest Appointment per Patient**
+* 📈 **Department Ranking via RANK()**
+* ➕ **Re-admitted Patients (≥2)**
+* ❌ **Doctors Without Any Appointments**
+* 📊 **Average Appointments per Doctor**
 
-- 💊 **Top Prescribed Medicines**  
-  Find the most frequently prescribed medicines.
-
-- 📅 **Daily Appointments (7-day view)**  
-  View how many appointments were scheduled per day over the last week.
-
-- ⚖️ **Average Number of Appointments Per Doctor**  
-  Calculate how busy each doctor is on average.
-
-- 🧾 **Latest Appointment per Patient (Window Function)**  
-  Use ROW_NUMBER to extract the most recent appointment for each patient.
-
-- 📈 **Department Ranking by Appointment Volume (CTE + RANK)**  
-  Rank departments based on the total number of appointments.
-
-- ➕ **Re-admitted Patients (≥2 Admissions)**  
-  Identify patients who have been admitted multiple times.
-
-- ❌ **Doctors Without Any Appointments**  
-  Highlight doctors who currently have no appointments.
-
+Full explanations in `extras/analytics_explained.md`
 
 ---
 
-## ⚙️ Setup Instructions
+## 📥 Setup Instructions
 
-1. **Clone the repository:**
+### 1. **Clone the Repository**
 
 ```bash
 git clone https://github.com/your-username/hospital-sql-project.git
 cd hospital-sql-project
 ```
 
-2. **Create and connect to PostgreSQL database:**
-- Ensure PostgreSQL is installed and running.
+### 2. **Create and Connect to PostgreSQL Database**
+
+Make sure PostgreSQL is installed and running.
 
 ```bash
 createdb hospital_db
 ```
 
-or 
+*or use SQL:*
 
 ```sql
 CREATE DATABASE hospital_db;
 ```
 
-3. **Execute Schema and Load Sample Data**
+### 3. **Run Schema & Insert Sample Data**
 
-Run the following commands to set up your tables and insert sample data:
+Execute the schema and insert files:
 
 ```bash
 psql -U postgres -d hospital_db -f schema/create_tables.sql
 psql -U postgres -d hospital_db -f schema/insert_data.sql
 ```
-💡 Note:
-The insert_data.sql script includes \COPY commands to import data from CSV files located in the /data folder.
 
-4. **Run All SQL Queries and Logic Files**
+If you're importing data from CSVs (as included):
 
-Execute the following files one by one:
+```sql
+\copy patients(name, gender, dob, contact) FROM 'data/patients.csv' DELIMITER ',' CSV HEADER;
+\copy doctors(name, specialty, department_id) FROM 'data/doctors.csv' DELIMITER ',' CSV HEADER;
+-- Add similar COPY commands for other tables
+```
+
+### 4. **Run Core Queries & Functions**
 
 ```bash
 psql -U postgres -d hospital_db -f queries/analytics_queries.sql
 psql -U postgres -d hospital_db -f queries/triggers_and_functions.sql
 psql -U postgres -d hospital_db -f queries/stored_procedures.sql
-psql -U postgres -d hospital_db -f queries/optimization_notes.sql
 ```
 
-5. **(Optional) Python Integration**
+---
 
-If you want to use Python for interacting with PostgreSQL (data retrieval, analysis, visualizations):
+## 📈 Optional: Python Integration (Jupyter Notebook)
 
-1.	Navigate to the extras/ folder:
-```bash
-cd hospital-sql-project/extras
+Use the provided `.ipynb` in the `extras/` folder to:
+
+* Connect to PostgreSQL using `psycopg2`
+* Load data using `pandas`
+* Use `.env` file for credentials (ensure it's in the same folder)
+* Plot top queries using matplotlib
+
+### .env Example (Not pushed to GitHub)
+
+```ini
+DB_NAME=hospital_db
+DB_USER=postgres
+DB_PASSWORD=your_password
+DB_HOST=localhost
+DB_PORT=5432
 ```
 
-2.	Run the notebook:
+---
 
-```bash
-jupyter notebook hospital_analysis.ipynb
-```
+## 📤 How to Add Your Own Data
 
-📌 This notebook connects to the PostgreSQL database using psycopg2 and fetches results into pandas DataFrames.
+You can insert your own data in two ways:
 
-6. **(Optional) Add Your Own Data**
-	•	Replace or modify the CSV files inside the /data folder
-	•	Update the insert_data.sql file if schema or format changes
-	•	Or manually insert records using standard SQL:
+### Option 1: Manual INSERT
 
 ```sql
 INSERT INTO patients (name, gender, dob, contact)
 VALUES ('John Doe', 'Male', '1990-01-01', '1234567890');
 ```
 
-Or, if you’ve enabled stored procedures for inserting data, use:
+### Option 2: Use Stored Procedure
 
 ```sql
 CALL insert_patient('John Doe', 'Male', '1990-01-01', '1234567890');
 ```
 
+### Option 3: Import from CSV
+
+Make sure your `.csv` file matches column order.
+
+```sql
+\copy patients(name, gender, dob, contact) FROM 'data/patients.csv' DELIMITER ',' CSV HEADER;
+```
+
 ---
+<a name="er-diagram"></a>
 
 ## 🖼️ ER Diagram
 
@@ -198,6 +223,20 @@ CALL insert_patient('John Doe', 'Male', '1990-01-01', '1234567890');
 
 ## 👨‍💻 Author
 
-- **Nivin Benny**
-- Aspiring Data Scientist @ Brototype
-- 📫 [LinkedIn](https://www.linkedin.com/in/nivinbenny) *(Add your real link)*
+* **Nivin Benny**
+* Aspiring Data Scientist @ Brototype
+* 📫 [LinkedIn](https://www.linkedin.com/in/nivin-benny)
+
+---
+
+## 📎 License
+
+This project is for educational and portfolio purposes only.
+
+---
+
+Feel free to ⭐️ this repo and share it if you find it helpful!
+
+---
+
+> Built with 💙 by Nivin Benny — Week 22 Capstone @ Brototype
