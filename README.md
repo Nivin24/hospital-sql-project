@@ -182,11 +182,11 @@ INSERT INTO patients (name, gender, dob, contact)
 VALUES ('John Doe', 'Male', '1990-01-01', '1234567890');
 ```
 
-	•	Or, if you’ve enabled stored procedures for inserting data, use:
+Or, if you’ve enabled stored procedures for inserting data, use:
 
-    ```sql
-    CALL insert_patient('John Doe', 'Male', '1990-01-01', '1234567890');
-    ```
+```sql
+CALL insert_patient('John Doe', 'Male', '1990-01-01', '1234567890');
+```
 
 ---
 
