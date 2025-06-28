@@ -16,7 +16,7 @@ It showcases advanced SQL concepts through a real-world healthcare data model in
 4. [Tech Stack](#-tech-stack)
 5. [Concepts Covered](#-concepts-covered)
 6. [Analytics Queries](#-analytics-queries)
-7. [Setup Instructions](#-️-setup-instructions)
+7. [Setup Instructions](#-setup-instructions)
 8. [ER Diagram](#er-diagram)
 9. [Author](#-author)
 10. [License](#-license)
