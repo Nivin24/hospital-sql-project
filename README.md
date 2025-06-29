@@ -121,8 +121,7 @@ Full explanations in `extras/analytics_explained.md`
 ### 1. **Clone the Repository**
 
 ```bash
-git clone https://github.com/Nivin24/hospital-sql-project.git
-
+git clone https://github.com/your-username/hospital-sql-project.git
 cd hospital-sql-project
 ```
 
