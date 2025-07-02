@@ -72,7 +72,7 @@ hospital-sql-project/
 | Database          | PostgreSQL                     |
 | Language          | SQL + PL/pgSQL                 |
 | Backend Scripting | Python (with psycopg2, pandas) |
-| IDE & Utilities   | VSCode, DBeaver, CLI           |
+| IDE & Utilities   | VSCode, dbdiagram.io, CLI           |
 | Version Control   | Git & GitHub                   |
 
 🔐 Credentials (for Python) are stored securely in a `.env` file. Already excluded from Git using `.gitignore`.
@@ -121,7 +121,7 @@ Full explanations in `extras/analytics_explained.md`
 ### 1. **Clone the Repository**
 
 ```bash
-git clone https://github.com/your-username/hospital-sql-project.git
+git clone https://github.com/Nivin24/hospital-sql-project.git
 cd hospital-sql-project
 ```
 
